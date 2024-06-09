@@ -44,6 +44,21 @@
 
 <br>
 
+**-** Busca todos os arquivos que começa com 'log' no nome: ``` find -name "log*"```<br>
+**-** Busca todos os arquivos que começa com 'log' no nome ignorando maiusculas e minusculas: ```  find -iname "log*" ```<br>
+**-** Busca todos os arquivos que contém 'log' no nome: ``` find -name "*log*"```<br>
+**-** Traz todos os arquivos que contem o 'log' e '2016' no nome: ``` find -name "*log*" -name "*2016*"```<br>
+**-** Traz todos os arquivos que contem o 'log' ou '2016' no nome: ``` find -name "*log*" -o -name "*2016*"```<br>
+**-** Traz todos os arquivos que contem o 'log' e não tem '2016': ``` find -name "*log*" ! -name "*2016*"```<br>
+**-** Busca todos os arquivos da pasta /home com o nome teste.log pelo usuario:  ````find /home -name "teste.txt" -user usuario -ls ``
+
+**-** Traz os arquivos que tem tamanho maior de 500k: ``` find -size +500k```<br>
+**-** Traz os arquivos que tem tamanho menor de 500k: ``` find -size -500k```<br>
+**-** Mostra os arquivos que foram acessados ns últimos 7 dias: ``` find -atime -7```<br>
+**-** Mostra os arquivos que foram modificados nos ultimos 7 dias: ``` find -mtime -7```<br>
+
+<br>
+
 **-** Compacta diretório especificado recursivamente: ``` zip -r <nome_criado> <diretorio> ```<br>
 **-** Mostra os arquivos que estão dentro do arquivo zipado: ``` unzip -l <arquivo_zipado> ```<br>
 **-** Descompacta arquivo_zipado no diretorio que está: ``` unzip <arquivo_zipado> ```<br>
