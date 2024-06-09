@@ -3,6 +3,8 @@
 ##### A fazer:
 - Ver o que são cada um dos diretorios do Linux (imagem)
 
+***
+
 * Mostrar qual o IPv4 e IPv6 da máquina: ```hostname -I```
 * Mostra todos os diretórios do sitema: ```ls /```
 * Exibe informações sobre o uso do espaço em disco no sistema de arquivos: ```df -Th```
@@ -12,6 +14,19 @@
 * Comando pra criar pasta vazia: ``` mkdir <nome_da_pasta> ```
 * Comando pra remover pasta vazia: ``` rmdir <nome_da_pasta> ```
 * Comando pra remover pasta e os arquivos dentro dessa pasta: ``` rm -r <nome_da_pasta> ```
+
+* Apaga um arquivo: ``` rm {arquivo} ```
+* Copia o conteúdo que tá no arquivo1 para o arquivo2: ``` cp {arquivo1} {arquivo2}``` 
+* Faz copia do diretorio1 pra dentro o diretorio2: ``` cp -r {diretorio1} {diretorio2} ``` 
+* Copia tudo o que está dentro do diretorio em que está pra o diretorio2: ``` cp -r * {diretorio2} ``` 
+* Copia tudo oq está dentro do diretorio1 para o diretorio2: ``` cp -r {diretorio1/*} {diretorio2}```  
+* Move o arquivo para o diretorio: ``` mv {arquivo} {diretorio}``` 
+* Remove tudo oq está dentro do diretorio1 para o diretorio2: ``` mv {diretorio1/*} {diretorio2}```  
+* Renomeia o nome do arquivo: ``` mv {arquivo} {novo_nome_arquivo}``` 
+
+* Mostra as 10 primeiras linhas do arquivo: ``` head -n 10 {arquivo}``` 
+* Mostra as 10 ultimas linhas do arquivo: ``` tail -n 10 {arquivo} ``` 
+
 
 * Arquiva a pasta e os subdiretórios da pasta pro arquivo.tar: ``` tar -cvf <arquivo.tar> /home/pasta ```
 * Lista os arquivos que estão dentro do arquivo.tar: ``` tar -tf <arquivo.tar> ``` 
