@@ -5,10 +5,10 @@
 
 ***
 
-* Mostrar qual o IPv4 e IPv6 da máquina: ```hostname -I```
-* Mostra todos os diretórios do sitema: ```ls /```
-* Exibe informações sobre o uso do espaço em disco no sistema de arquivos: ```df -Th```
-* Exibe uma lista de sistemas de arquivos montados:  ```findmnt```
+**-** Mostrar qual o IPv4 e IPv6 da máquina: ```hostname -I``` <br>
+ Mostra todos os diretórios do sitema: ```ls /``` <br>
+ Exibe informações sobre o uso do espaço em disco no sistema de arquivos: ```df -Th``` <br>
+ Exibe uma lista de sistemas de arquivos montados:  ```findmnt``` <br>
 
 * Comando pra criar arquivo vazio: ``` touch <nome_do_arquivo> ```
 * Comando pra criar pasta vazia: ``` mkdir <nome_da_pasta> ```
