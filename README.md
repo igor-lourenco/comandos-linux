@@ -1,7 +1,7 @@
 ### Comandos Linux
 
 ##### A fazer:
-- Ver o que são cada um dos diretorios do Linux
+- Ver o que são cada um dos diretorios do Linux (imagem)
 
 * Mostrar qual o IPv4 e IPv6 da máquina: ```hostname -I```
 * Mostra todos os diretórios do sitema: ```ls /```
@@ -13,7 +13,9 @@
 * Comando pra remover pasta vazia: ``` rmdir <nome_da_pasta> ```
 * Comando pra remover pasta e os arquivos dentro dessa pasta: ``` rm -r <nome_da_pasta> ```
 
-
-***
-Parou no compactação
-*** 
+* Arquiva a pasta e os subdiretórios da pasta pro arquivo.tar: ``` tar -cvf <arquivo.tar> /home/pasta ```
+* Lista os arquivos que estão dentro do arquivo.tar: ``` tar -tf <arquivo.tar> ``` 
+* Desarquiva o arquivo.tar: ``` tar -xf <arquivo.tar> ```
+* Apaga: ``` rm <arquivo.tar> ```
+* Comprime o arquivo.tar.gz: ``` tar -czvf <arquivo.tar.gz> ```
+* Descomprime o arquivo.tar.gz: ``` tar -xzvf <arquivo.tar.gz> ```
