@@ -19,3 +19,8 @@
 * Apaga: ``` rm <arquivo.tar> ```
 * Comprime o arquivo.tar.gz: ``` tar -czvf <arquivo.tar.gz> ```
 * Descomprime o arquivo.tar.gz: ``` tar -xzvf <arquivo.tar.gz> ```
+
+* Compacta diretório especificado recursivamente: ``` zip -r <nome_criado> <diretorio> ```
+* Mostra os arquivos que estão dentro do arquivo zipado: ``` unzip -l <arquivo_zipado> ```
+* Descompacta arquivo_zipado no diretorio que está: ``` unzip <arquivo_zipado> ```
+* Descompacta arquivo_zipado no diretorio especificado: ``` unzip <arquivo_zipado> -d <diretorio> ``` 
