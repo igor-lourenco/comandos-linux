@@ -28,19 +28,8 @@
 **-** Remove tudo oq está dentro do diretorio1 para o diretorio2: ``` mv {diretorio1/*} {diretorio2}```  <br>
 **-** Renomeia o nome do arquivo: ``` mv {arquivo} {novo_nome_arquivo}``` <br>
 
-<br>
-
 **-** Mostra as 10 primeiras linhas do arquivo: ``` head -n 10 {arquivo}``` <br>
 **-** Mostra as 10 ultimas linhas do arquivo: ``` tail -n 10 {arquivo} ``` <br>
-
-<br>
-
-**-** Arquiva a pasta e os subdiretórios da pasta pro arquivo.tar: ``` tar -cvf <arquivo.tar> /home/pasta ```<br>
-**-** Lista os arquivos que estão dentro do arquivo.tar: ``` tar -tf <arquivo.tar> ``` <br>
-**-** Desarquiva o arquivo.tar: ``` tar -xf <arquivo.tar> ```<br>
-**-** Apaga: ``` rm <arquivo.tar> ```<br>
-**-** Comprime o arquivo.tar.gz: ``` tar -czvf <arquivo.tar.gz> ```<br>
-**-** Descomprime o arquivo.tar.gz: ``` tar -xzvf <arquivo.tar.gz> ```<br>
 
 <br>
 
@@ -50,7 +39,7 @@
 **-** Traz todos os arquivos que contem o 'log' e '2016' no nome: ``` find -name "*log*" -name "*2016*"```<br>
 **-** Traz todos os arquivos que contem o 'log' ou '2016' no nome: ``` find -name "*log*" -o -name "*2016*"```<br>
 **-** Traz todos os arquivos que contem o 'log' e não tem '2016': ``` find -name "*log*" ! -name "*2016*"```<br>
-**-** Busca todos os arquivos da pasta /home com o nome teste.log pelo usuario:  ````find /home -name "teste.txt" -user usuario -ls ``
+**-** Busca todos os arquivos da pasta /home com o nome teste.log pelo usuario:  ```find /home -name "teste.txt" -user usuario -ls ```
 
 **-** Traz os arquivos que tem tamanho maior de 500k: ``` find -size +500k```<br>
 **-** Traz os arquivos que tem tamanho menor de 500k: ``` find -size -500k```<br>
@@ -58,6 +47,13 @@
 **-** Mostra os arquivos que foram modificados nos ultimos 7 dias: ``` find -mtime -7```<br>
 
 <br>
+
+**-** Arquiva a pasta e os subdiretórios da pasta pro arquivo.tar: ``` tar -cvf <arquivo.tar> /home/pasta ```<br>
+**-** Lista os arquivos que estão dentro do arquivo.tar: ``` tar -tf <arquivo.tar> ``` <br>
+**-** Desarquiva o arquivo.tar: ``` tar -xf <arquivo.tar> ```<br>
+**-** Apaga: ``` rm <arquivo.tar> ```<br>
+**-** Comprime o arquivo.tar.gz: ``` tar -czvf <arquivo.tar.gz> ```<br>
+**-** Descomprime o arquivo.tar.gz: ``` tar -xzvf <arquivo.tar.gz> ```<br>
 
 **-** Compacta diretório especificado recursivamente: ``` zip -r <nome_criado> <diretorio> ```<br>
 **-** Mostra os arquivos que estão dentro do arquivo zipado: ``` unzip -l <arquivo_zipado> ```<br>
