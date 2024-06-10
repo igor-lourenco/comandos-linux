@@ -68,3 +68,14 @@
 **-** Mostra os arquivos que estão dentro do arquivo zipado: ``` unzip -l <arquivo_zipado> ```<br>
 **-** Descompacta arquivo_zipado no diretorio que está: ``` unzip <arquivo_zipado> ```<br>
 **-** Descompacta arquivo_zipado no diretorio especificado: ``` unzip <arquivo_zipado> -d <diretorio> ``` <br>
+
+
+###### Conhecendo o Shell
+
+**-** Comando para identificar qual Shell padrão do sistema operacional : ``` echo $SHELL ```
+
+env => mostra as variaveis de ambiente
+NOME_VARIAVEL=valor => cria uma variavel local(apenas no bash que está)
+export $NOME_VARIAVEL=valor => adiciona $NOME_VARIAVEL como variavel de ambiente
+export -n $NOME_VARIAVEL => remove $NOME_VARIAVEL da variavel de ambiente, mas ainda pode existir no shell atual
+unset $NOME_VARIAVEL => remove $NOME_VARIAVEL da variavel de ambiente e exclui do shell atual
