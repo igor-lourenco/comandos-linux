@@ -54,21 +54,15 @@
 
 **-** Arquiva a a pasta e os subdiretórios da pasta pro arquivo.tar: ``` tar -cvf <arquivo.tar> /home/pasta/ ```<br>
 **-** Desarquiva o arquivo.tar: ``` tar -xvf <arquivo.tar> ```<br>
-**-** Cria arquivo.tar e compacta usando o gzip: ``` tar -czvf <arquivo.tar.gz> /home/pasta/ ```<br>
-**-** Cria arquivo.tar e compacta usando o bz2: ``` tar -czjf <arquivo.tar.bz2> /home/pasta/ ```<br>
-
-**-** Decompacta tanto arquivos.tar, arquivos.tar.gz, arquivos.tar.bz2, arquivos.tgz no caminho da pasta especificado: ``` tar -xvf <arquivo.bz2> -C /home/pasta/```<br>
-
+**-** Cria arquivo.tar.gz e compacta usando o gzip: ``` tar -czvf <arquivo.tar.gz> /home/pasta/ ```<br>
+**-** Cria arquivo.tar.bz2 e compacta usando o bz2: ``` tar -czjf <arquivo.tar.bz2> /home/pasta/ ```<br>
 **-** Adicionar arquivo novo dentro do arquivo.tar: ``` tar -rvf arquivo.tar arquivo_novo ```
 
+**-** Decompacta tanto arquivos.tar, arquivos.tar.gz, arquivos.tar.bz2, arquivos.tgz no caminho da pasta especificado: ``` tar -xvf <arquivo.bz2> -C /home/pasta/```<br>
+**-** Descompacta o arquivo.tar.gz: ``` tar -xzvf <arquivo.tar.gz> ```<br>
 **-** Decompacta apenas arquivo_especificado  tanto arquivos.tar, arquivos.tar.gz, arquivos.tar.bz2, arquivos.tgz no caminho da pasta especificado (tem que ser o caminho completo do arquivo_especificado que esta dentro do arquivo compactado): ``` tar -xvf <arquivo.bz2> arquivo_especificado```<br>
 
-
 **-** Lista os arquivos que estão dentro tanto arquivos.tar, arquivos.tar.gz, arquivos.tar.bz2, arquivos.tgz: ``` tar -tf <arquivo.tgz> ``` <br>
-
-**-** Apaga: ``` rm <arquivo.tar> ```<br>
-**-** Comprime o arquivo.tar.gz: ``` tar -czvf <arquivo.tar.gz> ```<br>
-**-** Descomprime o arquivo.tar.gz: ``` tar -xzvf <arquivo.tar.gz> ```<br>
 
 **-** Compacta diretório especificado recursivamente: ``` zip -r <nome_criado> <diretorio> ```<br>
 **-** Mostra os arquivos que estão dentro do arquivo zipado: ``` unzip -l <arquivo_zipado> ```<br>
