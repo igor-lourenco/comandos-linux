@@ -31,6 +31,8 @@
 **-** Mostra as 10 primeiras linhas do arquivo: ``` head -n 10 {arquivo}``` <br>
 **-** Mostra as 10 ultimas linhas do arquivo: ``` tail -n 10 {arquivo} ``` <br>
 
+**-** Lista os arquivo e diretórios pelo nome_filtro e mostra o tamanho dos arquivos: ``` ls -lah | grep <nome_filtro> ``` <br>
+
 <br>
 
 **-** Busca todos os arquivos que começa com 'log' no nome: ``` find -name "log*"```<br>
@@ -48,9 +50,22 @@
 
 <br>
 
-**-** Arquiva a pasta e os subdiretórios da pasta pro arquivo.tar: ``` tar -cvf <arquivo.tar> /home/pasta ```<br>
-**-** Lista os arquivos que estão dentro do arquivo.tar: ``` tar -tf <arquivo.tar> ``` <br>
-**-** Desarquiva o arquivo.tar: ``` tar -xf <arquivo.tar> ```<br>
+###### Comandos de compactação/descompactação
+
+**-** Arquiva a a pasta e os subdiretórios da pasta pro arquivo.tar: ``` tar -cvf <arquivo.tar> /home/pasta/ ```<br>
+**-** Desarquiva o arquivo.tar: ``` tar -xvf <arquivo.tar> ```<br>
+**-** Cria arquivo.tar e compacta usando o gzip: ``` tar -czvf <arquivo.tar.gz> /home/pasta/ ```<br>
+**-** Cria arquivo.tar e compacta usando o bz2: ``` tar -czjf <arquivo.tar.bz2> /home/pasta/ ```<br>
+
+**-** Decompacta tanto arquivos.tar, arquivos.tar.gz, arquivos.tar.bz2, arquivos.tgz no caminho da pasta especificado: ``` tar -xvf <arquivo.bz2> -C /home/pasta/```<br>
+
+**-** Adicionar arquivo novo dentro do arquivo.tar: ``` tar -rvf arquivo.tar arquivo_novo ```
+
+**-** Decompacta apenas arquivo_especificado  tanto arquivos.tar, arquivos.tar.gz, arquivos.tar.bz2, arquivos.tgz no caminho da pasta especificado (tem que ser o caminho completo do arquivo_especificado que esta dentro do arquivo compactado): ``` tar -xvf <arquivo.bz2> arquivo_especificado```<br>
+
+
+**-** Lista os arquivos que estão dentro tanto arquivos.tar, arquivos.tar.gz, arquivos.tar.bz2, arquivos.tgz: ``` tar -tf <arquivo.tgz> ``` <br>
+
 **-** Apaga: ``` rm <arquivo.tar> ```<br>
 **-** Comprime o arquivo.tar.gz: ``` tar -czvf <arquivo.tar.gz> ```<br>
 **-** Descomprime o arquivo.tar.gz: ``` tar -xzvf <arquivo.tar.gz> ```<br>
