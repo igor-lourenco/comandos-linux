@@ -73,9 +73,20 @@
 ###### Conhecendo o Shell
 
 **-** Comando para identificar qual Shell padrão do sistema operacional : ``` echo $SHELL ```
+**-** Mostra as variaveis de ambiente: ``` env => 
+**-** Cria uma variavel local(apenas no bash que está): ``` NOME_VARIAVEL=valor ```
+**-** Adiciona $NOME_VARIAVEL como variavel de ambiente export ``` $NOME_VARIAVEL=valor ```
+**-** Remove $NOME_VARIAVEL da variavel de ambiente, mas ainda pode existir no shell atual: ``` export -n $NOME_VARIAVEL ```
+**-** Remove $NOME_VARIAVEL da variavel de ambiente e exclui do shell atual: ``` unset $NOME_VARIAVEL ```
 
-env => mostra as variaveis de ambiente
-NOME_VARIAVEL=valor => cria uma variavel local(apenas no bash que está)
-export $NOME_VARIAVEL=valor => adiciona $NOME_VARIAVEL como variavel de ambiente
-export -n $NOME_VARIAVEL => remove $NOME_VARIAVEL da variavel de ambiente, mas ainda pode existir no shell atual
-unset $NOME_VARIAVEL => remove $NOME_VARIAVEL da variavel de ambiente e exclui do shell atual
+**-** Criar atalhos ou nomes alternativos com alias: ``` alias nome_alias='comando' ```
+**-** Listar todos os alias atualmente do sistema: ``` alias ```
+**-** Remover um alias: ``` unalias nome_alias```
+**-** Para deixar um alias permanente tem adicionar ao arquivo *~/.bashrc* ou *~/.bash_profile*, e depois recarregar o arquivo com o comando: ``` source ~/.bashrc```
+
+
+
+
+
+
+
