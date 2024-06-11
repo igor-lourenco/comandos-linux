@@ -72,20 +72,24 @@
 
 ###### Conhecendo o Shell
 
-**-** Comando para identificar qual Shell padrão do sistema operacional : ``` echo $SHELL ```
-**-** Mostra as variaveis de ambiente: ``` env => 
-**-** Cria uma variavel local(apenas no bash que está): ``` NOME_VARIAVEL=valor ```
-**-** Adiciona $NOME_VARIAVEL como variavel de ambiente export ``` $NOME_VARIAVEL=valor ```
-**-** Remove $NOME_VARIAVEL da variavel de ambiente, mas ainda pode existir no shell atual: ``` export -n $NOME_VARIAVEL ```
-**-** Remove $NOME_VARIAVEL da variavel de ambiente e exclui do shell atual: ``` unset $NOME_VARIAVEL ```
+**-** Comando para identificar qual Shell padrão do sistema operacional : ``` echo $SHELL ``` <br>
+**-** Mostra as variaveis de ambiente: ``` env ``` <br>
+**-** Cria uma variavel local(apenas no bash que está): ``` NOME_VARIAVEL=valor ``` <br>
+**-** Adiciona $NOME_VARIAVEL como variavel de ambiente export ``` $NOME_VARIAVEL=valor ``` <br>
+**-** Remove $NOME_VARIAVEL da variavel de ambiente, mas ainda pode existir no shell atual: ``` export -n $NOME_VARIAVEL ```  <br>
+**-** Remove $NOME_VARIAVEL da variavel de ambiente e exclui do shell atual: ``` unset $NOME_VARIAVEL ``` <br>
 
-**-** Criar atalhos ou nomes alternativos com alias: ``` alias nome_alias='comando' ```
-**-** Listar todos os alias atualmente do sistema: ``` alias ```
-**-** Remover um alias: ``` unalias nome_alias```
-**-** Para deixar um alias permanente tem adicionar ao arquivo *~/.bashrc* ou *~/.bash_profile*, e depois recarregar o arquivo com o comando: ``` source ~/.bashrc```
+**-** Criar atalhos ou nomes alternativos com alias: ``` alias nome_alias='comando' ``` <br>
+**-** Listar todos os alias atualmente do sistema: ``` alias ``` <br>
+**-** Remover um alias: ``` unalias nome_alias``` <br>
+**-** Para deixar um alias permanente tem adicionar ao arquivo *~/.bashrc* ou *~/.bash_profile*, e depois recarregar o arquivo com o comando: ``` source ~/.bashrc``` <br>
 
+**-**  Mostrar o histórico dos comandos executados: ```` history `` <br>
+**-**  Mostrando os 10 últimos comandos executados: ```` history 10`` <br>
+**-** Executa o comando do histórico pelo numero de referencia: ``` !<numero_de_referencia_comando> ```  <br>
+**-** Busca no histórico o comando que contenha a palavra: ``` history | grep <palavra> ``` <br>
 
-
+   
 
 
 
