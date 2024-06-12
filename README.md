@@ -83,9 +83,10 @@
 **-** Listar todos os alias atualmente do sistema: ``` alias ``` <br>
 **-** Remover um alias: ``` unalias nome_alias``` <br>
 **-** Para deixar um alias permanente tem adicionar ao arquivo *~/.bashrc* ou *~/.bash_profile*, e depois recarregar o arquivo com o comando: ``` source ~/.bashrc``` <br>
+**-** Filtra na pasta /home/igor arquivo que tenha o nome teste.log e atribui retorno para o alias testeLog: ``` alias testeLog="$(find /home/igor | grep teste.log)" ```<br>  
 
-**-**  Mostrar o histórico dos comandos executados: ```` history `` <br>
-**-**  Mostrando os 10 últimos comandos executados: ```` history 10`` <br>
+**-**  Mostrar o histórico dos comandos executados: ``` history ``` <br>
+**-**  Mostrando os 10 últimos comandos executados: ``` history 10 ``` <br>
 **-** Executa o comando do histórico pelo numero de referencia: ``` !<numero_de_referencia_comando> ```  <br>
 **-** Busca no histórico o comando que contenha a palavra: ``` history | grep <palavra> ``` <br>
 
