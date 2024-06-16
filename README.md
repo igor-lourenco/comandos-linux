@@ -92,8 +92,11 @@
 **-** Busca no histórico o comando que contenha a palavra: ``` history | grep <palavra> ``` <br>
 **—** Para obter informações do sistema: ``` uname -a```
 
-   
+###### Conhecendo o Vi
 
+
+**—** Site para praticar o vi: ``` https://openvim.com/ ```
+**—** Arquivo de configuração do vim: ``` /etc/vim/vimrc  ```
 
 
 
