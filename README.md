@@ -95,8 +95,22 @@
 ###### Conhecendo o Vi
 
 
-**—** Site para praticar o vi: ``` https://openvim.com/ ```
-**—** Arquivo de configuração do vim: ``` /etc/vim/vimrc  ```
+**—** Site para praticar o vi: ``` https://openvim.com/ ```  <br>
+**—** Arquivo de configuração do vim: ``` /etc/vim/vimrc  ```  <br>
+
+**-** Entra no modo padrão: ``` esc ```  <br>
+**-** Salva as insercoes: ``` w ```   <br>
+**-** Remove a quantidade de caracteres especificado: ``` {numero}x ```   <br>
+**-** Remove uma linha: ``` dd ```  <br>
+**-** Remove a quantidade de linhas especificado: ``` {numero}dd ```   <br>
+**-** Sai sem salvar as alterações: ``` q! ```   <br>
+
+**-** Mostra as palavras que já foram escritas pra fazer auto-complete: ``` ctrl + n  ```   <br>
+**-** Vai pro numero da linha especificada: ``` {numero}G  ```   <br>
+**-** Faz uma busca no arquivo com o nome especificado: ``` /{nome}  ```   <br>
+**-** Vai pra próxima ocorrência da busca:  ``` n  ```  <br>
+**-** Volta pra ocorrência anterior da busca: ``` N  ```   <br>
+
 
 
 
