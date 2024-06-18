@@ -118,6 +118,7 @@
 **-** Cria senha para usuario: ``` passwd <usuario>   ```   <br>
 **-** Lista os usuarios do sistema: ``` tail /etc/passwd  ```   <br>
 **-** Deleta ususario: ``` userdel <usuario>  ```   <br>
+**-** Alterando usuario para deixar como superusuario(Tem que ter permissão de superusuario para alterar): ``` vim /etc/sudoers  ```   <br>
 
 
 
