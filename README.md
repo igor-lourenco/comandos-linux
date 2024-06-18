@@ -117,6 +117,7 @@
 **-** Cria um usuario novo: ``` useradd <nome>   ```   <br>
 **-** Cria senha para usuario: ``` passwd <usuario>   ```   <br>
 **-** Lista os usuarios do sistema: ``` tail /etc/passwd  ```   <br>
+**-** Deleta ususario: ``` userdel <usuario>  ```   <br>
 
 
 
