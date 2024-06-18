@@ -100,16 +100,26 @@
 
 **-** Entra no modo padrão: ``` esc ```  <br>
 **-** Salva as insercoes: ``` w ```   <br>
-**-** Remove a quantidade de caracteres especificado: ``` {numero}x ```   <br>
+**-** Remove a quantidade de caracteres especificado: ``` <numero>x ```   <br>
 **-** Remove uma linha: ``` dd ```  <br>
-**-** Remove a quantidade de linhas especificado: ``` {numero}dd ```   <br>
+**-** Remove a quantidade de linhas especificado: ``` <numero>dd ```   <br>
 **-** Sai sem salvar as alterações: ``` q! ```   <br>
 
 **-** Mostra as palavras que já foram escritas pra fazer auto-complete: ``` ctrl + n  ```   <br>
-**-** Vai pro numero da linha especificada: ``` {numero}G  ```   <br>
-**-** Faz uma busca no arquivo com o nome especificado: ``` /{nome}  ```   <br>
+**-** Vai pro numero da linha especificada: ``` <numero>G  ```   <br>
+**-** Faz uma busca no arquivo com o nome especificado: ``` /<nome>  ```   <br>
 **-** Vai pra próxima ocorrência da busca:  ``` n  ```  <br>
 **-** Volta pra ocorrência anterior da busca: ``` N  ```   <br>
+
+
+###### Gerenciando contas de usuários
+
+**-** Cria um usuario novo: ``` useradd <nome>   ```   <br>
+**-** Cria senha para usuario: ``` passwd <usuario>   ```   <br>
+**-** Lista os usuarios do sistema: ``` tail /etc/passwd  ```   <br>
+
+
+
 
 
 
