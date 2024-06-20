@@ -119,8 +119,12 @@
 **-** Lista os usuarios do sistema: ``` tail /etc/passwd  ```   <br>
 **-** Deleta ususario: ``` userdel <usuario>  ```   <br>
 **-** Alterando usuario para deixar como superusuario(Tem que ter permissão de superusuario para alterar): ``` vim /etc/sudoers  ```   <br>
+**-** Trocar de usuário dentro do terminal: ``` su <nome_do_usuário> ```  <br>
 
 
+###### Configurações de rede
+
+**-** Exibir os endereços IP das interfaces de rede no sistema: ``` ip addr ```  <br>
 
 
 
