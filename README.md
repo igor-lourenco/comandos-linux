@@ -131,6 +131,6 @@
 192.168.1.10    server1.localdomain server1
 192.168.1.20    server2.localdomain server2
 
-
+**-** Para configurar o nome do host (hostname) da máquina, tem que editar o arquivo: ``` /etc/hostname ```
 
 
