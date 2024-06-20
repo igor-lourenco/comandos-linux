@@ -125,7 +125,11 @@
 ###### Configurações de rede
 
 **-** Exibir os endereços IP das interfaces de rede no sistema: ``` ip addr ```  <br>
+**-** Para mapeia nomes de host para endereços IP, tem que editar o arquivo /etc/hosts da seguinte forma(Obs: funciona apenas localmente, sem precisar configurar o DNS):
 
+127.0.1.1       mymachine.localdomain mymachine
+192.168.1.10    server1.localdomain server1
+192.168.1.20    server2.localdomain server2
 
 
 
