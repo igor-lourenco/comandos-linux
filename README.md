@@ -124,7 +124,7 @@
 
 ###### Configurações de rede
 
-**-** Exibir os endereços IP das interfaces de rede no sistema: ``` ip addr ```  <br>
+**-** Exibir os endereços IP das interfaces de rede no sistema: ``` ip addr ``` ou ``` ip a s ```  <br>
 **-** Para mapeia nomes de host para endereços IP, tem que editar o arquivo **/etc/hosts** da seguinte forma(Obs: funciona apenas localmente, sem precisar configurar o DNS):
 ```
 #IP_address     hostname              [aliases...]
