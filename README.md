@@ -135,4 +135,8 @@
 
 **-** Para configurar o nome do host (hostname) da máquina, tem que editar o arquivo: ``` /etc/hostname ```
 
+###### Instalação JAVA
+
+**-** Comando pra instalar java: ``` apt install openjdk-11-jdk ```  <br>
+
 
