@@ -138,5 +138,6 @@
 ###### Instalação JAVA
 
 **-** Comando pra instalar java: ``` apt install openjdk-11-jdk ```  <br>
+**-** Comando pra ver caminho onde java foi instalado: ``` update-alternatives --config java  ```  <br>
 
 
