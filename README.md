@@ -138,6 +138,14 @@
 ###### Instalação JAVA
 
 **-** Comando pra instalar java: ``` apt install openjdk-11-jdk ```  <br>
-**-** Comando pra ver caminho onde java foi instalado: ``` update-alternatives --config java  ```  <br>
+**-** Comando pra ver caminho onde java foi instalado para editar o JAVA_HOME: ``` update-alternatives --config java  ```  <br>
+**-** Configurar o arquivo .bashrc para o java: 
+``` 
+# Configuracoes JAVA                                                                                                                                                    
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64                                                                                                                            
+export JAVA_HOME                                                                                                                                                        
+export PATH=$PATH:$JAVA_HOME 
+
+```
 
 
