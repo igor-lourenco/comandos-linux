@@ -1,7 +1,7 @@
 ### Comandos Linux
 
 ##### A fazer:
-- Ver o que são cada um dos diretorios do Linux (imagem)
+➔ Ver o que são cada um dos diretorios do Linux (imagem)
 
 ***
 
@@ -153,6 +153,57 @@ export PATH=$PATH:$JAVA_HOME
 **-** Ver o status do ssh: ```  service ssh status ```  <br>
 **-** Para limpar o chave antiga caso de erro no lado do cliente: ``` ssh-keygen -f "/home/<user_maquina_remota>/.ssh/known_hosts" -R "<ip_maquina_remota>" ```  <br>
 
+***
+
+######  Configuração do PostgreSQL
+
+➔ Importe a chave de assinatura do repositório:
+```
+sudo apt install curl ca-certificates
+sudo install -d /usr/share/postgresql-common/pgdg
+sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
+```
+
+➔ Crie o arquivo de configuração do repositório:
+```
+sudo sh -c 'echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+```
+
+➔ Atualizar as listas de pacotes:
+```
+sudo apt update && sudo apt upgrade 
+```
+
+➔ Instale a versão mais recente do PostgreSQL, se você quiser uma versão específica, use 'postgresql-16' ou similar em vez de 'postgresql'
+```
+sudo apt -y install postgresql
+```
+
+➔ Para ver o status do PostgreSQL
+```
+sudo systemctl status postgresql 
+```
+
+➔ Entrar como usuario postgres
+```
+su - postgres 
+```
+
+➔ Para entrar na administração PostgreSQL
+```
+psql
+```
+
+➔ Editar a senha do usuario postgres, (tem que executado o comando psql anteriormente)
+```
+\password postgres
+```
+
+
+➔ Depois de configurar o usuario postgres, basta executar esse comando para entrar diretamente na administração do PostgreSQL
+```
+sudo -u postgres psql  
+```
 
 
 
