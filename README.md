@@ -1,6 +1,6 @@
 ### Comandos Linux
 
-- [Configuração do PostgreSQL](##configuração-do-postgresql)
+- [Configuração do PostgreSQL](#configuração-do-postgresql)
 
 ##### A fazer:
 ➔ Ver o que são cada um dos diretorios do Linux (imagem)
