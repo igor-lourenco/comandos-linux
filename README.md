@@ -205,6 +205,30 @@ psql
 sudo -u postgres psql  
 ```
 
+➔ Para configurar PostgreSQL pra acesso remoto, primeiro tem que entrar no arquivo:
+```
+sudo vim /etc/postgresql/<version>/main/pg_hba.conf
+```
+
+➔ Adicione esta linha no final do arquivo pg_hba.conf para permitir conexões remotas:
+```
+host    all             all             <ip_da_maquina_do_cliente>/32        md5
+```
+
+➔ Depois de configurar o arquivo pg_hba.conf, entrar no arquivo:
+```
+sudo vim /etc/postgresql/<version>/main/postgresql.conf
+```
+
+➔ Descomentar o listen_addresses do arquivo postgresql.conf, e ajusta para permitir conexões de qualquer endereço IP
+```
+listen_addresses = '*'
+```
+
+➔ Depois reiniciar o PostgreSql:
+```
+sudo systemctl restart postgresql
+```
 
 
 
