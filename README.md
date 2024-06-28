@@ -1,5 +1,7 @@
 ### Comandos Linux
 
+- [Configuração do PostgreSQL](##configuração-do-postgresql)
+
 ##### A fazer:
 ➔ Ver o que são cada um dos diretorios do Linux (imagem)
 
@@ -155,6 +157,7 @@ export PATH=$PATH:$JAVA_HOME
 
 ***
 
+<a name="configuração-do-postgresql"></a>
 ######  Configuração do PostgreSQL
 
 ➔ Importe a chave de assinatura do repositório:
