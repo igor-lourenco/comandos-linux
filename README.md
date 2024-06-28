@@ -147,5 +147,23 @@ export JAVA_HOME
 export PATH=$PATH:$JAVA_HOME 
 
 ```
+######  Instalação do SSH
+
+**-** Comando pra instalar openssh-server: ``` apt install openssh-server ```  <br>
+**-** Ver o status do ssh: ```  service ssh status ```  <br>
+**-** Para limpar o chave antiga caso de erro no lado do cliente: ``` ssh-keygen -f "/home/<user_maquina_remota>/.ssh/known_hosts" -R "<ip_maquina_remota>" ```  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
