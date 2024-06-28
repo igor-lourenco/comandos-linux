@@ -158,12 +158,15 @@ export PATH=$PATH:$JAVA_HOME
 
 
 
+<br>
+<br>
+<br>
+<br>
 
 
 
 
+######  Suporte
 
-
-
-
+**-** Link para quando computador desliga quando fecha a tampa: ``` https://help.ubuntu.com/stable/ubuntu-help/power-closelid.html.pt-BR#:~:text=Clique%20em%20Ajustes%20para%20abrir,notebook%20%C3%A9%20fechada%20para%20desligado. ``` <br>
 
