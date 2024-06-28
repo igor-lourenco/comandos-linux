@@ -1,6 +1,7 @@
 ### Comandos Linux
 
 - [Configuração do PostgreSQL](#configuração-do-postgresql)
+- [Configuração do PgAdmin4](PgAdmin.md#configuração-do-pgadmin)
 
 ##### A fazer:
 ➔ Ver o que são cada um dos diretorios do Linux (imagem)
