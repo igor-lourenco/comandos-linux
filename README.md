@@ -1,6 +1,6 @@
 ### Comandos Linux
 
-- [Configuração do PostgreSQL](#configuração-do-postgresql)
+- [Configuração do PostgreSQL](PostgreSQL.md#configuração-do-postgresql)
 - [Configuração do PgAdmin4](PgAdmin.md#configuração-do-pgadmin)
 
 ##### A fazer:
