@@ -45,6 +45,10 @@ sudo mysql -u root -p
 sudo systemctl status mysql
 ```
 
+➔ Comando pra instalar o Mysql Workbench community:
+```
+snap install mysql-workbench-community
+```
 
 
 
