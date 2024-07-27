@@ -2,6 +2,7 @@
 
 - [Configuração do PostgreSQL](PostgreSQL.md#configuração-do-postgresql)
 - [Configuração do PgAdmin4](PgAdmin.md#configuração-do-pgadmin)
+- [Configuração do MySQL](MySQL.md#configuração-do-MySQL)
 - [Instalacao_java](#instalacao-java)
 
 ##### A fazer:
