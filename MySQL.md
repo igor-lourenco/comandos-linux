@@ -50,13 +50,54 @@ sudo systemctl status mysql
 snap install mysql-workbench-community
 ```
 
+# PhPMyAdmin
 
+➔ Comando para instalar o PHP
+```
+sudo apt install php
+```
 
+➔ Comando para instalar o phpMyAdmin
+```
+sudo apt install phpmyadmin
+```
 
+➔ Durante a instalaçaõ do phpMyAdmin, irá perguntar a opção do servidor e escolher:
+```
+apache2
+```
 
+➔ E depois escolher a opção 'NÃO' para a opção 'configurar banco de dados para phpmyadmin com dbconfig-common'
 
+➔ Para permitir conexões remotas do phpMyAdmin, editar o arquivo:
+```
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+```
 
+➔ E alterar a linha bind-address para:
+```
+bind-address = 0.0.0.0
+```
 
+➔ Reiniciar o Mysql:
+```
+sudo systemctl restart mysql
+```
 
+➔ Depois de reiniciar, conecta ao MySQL como usuário root:
+```
+sudo mysql -u root -p
+```
 
+➔ Cria um novo usuário ou configure um usuário existente para aceitar conexões remotas com esses comandos:
+```
+- CREATE USER 'remoteuser'@'%' IDENTIFIED BY 'password123';
+- GRANT ALL PRIVILEGES ON *.* TO 'remoteuser'@'%' WITH GRANT OPTION;
+- FLUSH PRIVILEGES;
+```
+
+➔ Configurar o firewall para permitir conexões MySQL
+```
+sudo ufw allow 3306/tcp
+```
 
