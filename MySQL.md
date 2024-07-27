@@ -28,11 +28,20 @@ sudo mysql_secure_installation
 
 ➔ O comando acima vai fazer essas perguntas para configuração: 
 ```
-- Definir a senha do usuário root: Ele pode solicitar que você defina uma nova senha para o usuário root do MySQL. Se a senha já estiver definida, ele pode perguntar se você deseja alterá-la.
-- Remover usuários anônimos: Usuários anônimos podem se conectar ao MySQL sem uma conta de usuário. Esta etapa sugere remover esses usuários para aumentar a segurança.
-- Desabilitar login remoto do root: O root do MySQL pode, por padrão, se conectar a partir de qualquer host. Esta opção sugere desabilitar essa capacidade para que o root só possa se conectar a partir de localhost, melhorando a segurança.
-- Remover o banco de dados de teste: MySQL vem com um banco de dados de teste que qualquer pessoa pode acessar. Esta etapa recomenda a remoção deste banco de dados.
-- Recarregar tabelas de privilégios: Finalmente, o script recarrega as tabelas de privilégios para que todas as mudanças entrem em vigor imediatamente.
+- Definir a senha do usuário root: Ele pode solicitar que você defina uma nova senha para o usuário root do MySQL.
+ Se a senha já estiver definida, ele pode perguntar se você deseja alterá-la.
+
+- Remover usuários anônimos: Usuários anônimos podem se conectar ao MySQL sem uma conta de usuário.
+Esta etapa sugere remover esses usuários para aumentar a segurança.
+
+- Desabilitar login remoto do root: O root do MySQL pode, por padrão, se conectar a partir de qualquer host.
+Esta opção sugere desabilitar essa capacidade para que o root só possa se conectar a partir de localhost, melhorando a segurança.
+
+- Remover o banco de dados de teste: MySQL vem com um banco de dados de teste que qualquer pessoa pode acessar.
+Esta etapa recomenda a remoção deste banco de dados.
+
+- Recarregar tabelas de privilégios: Finalmente, o script recarrega as tabelas de privilégios para que todas as
+mudanças entrem em vigor imediatamente.
 ```
 
 ➔ Comando para entrar no MySql depois de configurar a segurança de instalação:
