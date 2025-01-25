@@ -3,7 +3,7 @@
 - [Configuração do PostgreSQL](PostgreSQL.md#configuração-do-postgresql)
 - [Configuração do PgAdmin4](PgAdmin.md#configuração-do-pgadmin)
 - [Configuração do MySQL](MySQL.md#configuração-do-MySQL)
-- [Instalacao_java](#instalacao-java)
+- [Instalação Java](#instalacao-java)
 - [Instalação Redis Server](RedisServer.md#instalacao-redis-server)
 
 ##### A fazer:
