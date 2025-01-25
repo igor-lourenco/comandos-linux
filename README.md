@@ -4,7 +4,7 @@
 - [Configuração do PgAdmin4](PgAdmin.md#configuração-do-pgadmin)
 - [Configuração do MySQL](MySQL.md#configuração-do-MySQL)
 - [Instalacao_java](#instalacao-java)
-- [Instalação Redis Server](#instalacao-redis-server)
+- [Instalação Redis Server](RedisServer.md#instalacao-redis-server)
 
 ##### A fazer:
 ➔ Ver o que são cada um dos diretorios do Linux (imagem)
