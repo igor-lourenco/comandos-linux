@@ -5,7 +5,8 @@
 - [Configuração do MySQL](MySQL.md#configuração-do-MySQL)
 - [Instalação Java](#instalacao-java)
 - [Instalação Redis Server](RedisServer.md#instalacao-redis-server)
-- [Geração de chave assimétrica](Geracao_de_chave_assimetrica.md) 
+- [Geração de chave assimétrica](Geracao_de_chave_assimetrica.md)
+- [Configuração do Docker](Docker.md) 
 
 ##### A fazer:
 ➔ Ver o que são cada um dos diretorios do Linux (imagem)
