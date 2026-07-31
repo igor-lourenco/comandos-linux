@@ -1,4 +1,4 @@
-## Instalação do Jenkins 
+# Instalação do Jenkins 
 
 ➔ **Atualizar as listas de pacotes:**
 ```
@@ -142,3 +142,133 @@ Caminho: /usr/lib/jvm/java-17-openjdk-amd64
 Nome: MAVEN_LOCAL
 Caminho: /usr/share/maven
 ```
+
+
+
+
+
+# Criação de credencial SSH no Jenkins para acesso ao repositório Git
+
+
+
+## Geração de uma chave SSH para o Jenkins
+
+➔ **Gerando a chave no próprio servidor Jenkins. Boa prática usar ed25519:**
+```
+sudo mkdir -p /var/lib/jenkins/.ssh
+sudo ssh-keygen -t ed25519 -C "jenkins@$(hostname)" -f /var/lib/jenkins/.ssh/id_ed25519 -N ""
+sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
+sudo chmod 700 /var/lib/jenkins/.ssh
+sudo chmod 600 /var/lib/jenkins/.ssh/id_ed25519
+sudo chmod 644 /var/lib/jenkins/.ssh/id_ed25519.pub
+```
+
+➔ **Visualização da chave pública:**
+```
+sudo cat /var/lib/jenkins/.ssh/id_ed25519.pub
+```
+
+## Para Cadastrar a chave pública no provedor Git
+
+➔ **Vá até o repositório do projeto específico, e na aba:**
+
+**GitHub:** ```Settings > Deploy keys > Add deploy key```
+
+**GitLab:** ```Settings > Repository > Deploy keys```
+
+**BitBucket:** ```Repository settings > Access keys```
+
+**cole a chave pública.**
+
+
+## Para Adicionar a chave privada no Jenkins Credentials
+
+➔ **No Jenkins, vá em:** ```Manage Jenkins > Credentials > System > Global credentials > Add Credentials```
+
+➔ **Prrencha assim:**
+```
+Kind: SSH Username with private key
+Scope: Global
+ID: git-ssh-repo
+Description: Chave SSH para acessar repositório Git
+Username: git
+Private Key: Enter directly
+```
+
+➔ **Para visualizar a chave privada:**
+```
+sudo cat /var/lib/jenkins/.ssh/id_ed25519
+```
+
+➔ **Copie a chave privada, incluindo**
+```
+-----BEGIN OPENSSH PRIVATE KEY-----
+...
+-----END OPENSSH PRIVATE KEY-----
+```
+
+**E salva.**
+
+➔ **O username geralmente é:**
+```git```
+
+➔ **Para URLs como:**
+```
+git@github.com:empresa/projeto.git
+git@gitlab.com:empresa/projeto.git
+git@bitbucket.org:empresa/projeto.git
+```
+
+
+## Para configurar a verificação de host SSH
+
+➔ **Para evtar o erro:**
+```
+Host key verification failed
+```
+***Obs: Isso acontece porque o Git Client Plugin do Jenkins tem estratégias de verificação de host SSH, como Known hosts file, Accept first connection, Manually provided keys e No verification. A opção No verification não é recomendada porque remove a proteção contra ataque man-in-the-middle***
+
+➔ **No Jenkins, vá em:**
+```Manage Jenkins > Security > Git Host Key Verification Configuration```
+
+➔ **Escolha:**
+```Accept first connection```
+
+***Essa opção costuma ser a mais prática para ambientes internos, porque o Jenkins aceita a primeira conexão e exige que a chave do host seja a mesma nas próximas conexões***
+
+## Opção usando known_hosts no servidor, se preferir configurar manualmente no Linux
+
+➔ **GitHub:** ```sudo -u jenkins ssh-keyscan github.com >> /var/lib/jenkins/.ssh/known_hosts```
+
+➔ **GitLab:** ```sudo -u jenkins ssh-keyscan gitlab.com >> /var/lib/jenkins/.ssh/known_hosts```
+
+➔ **BitBucket:** ```sudo -u jenkins ssh-keyscan bitbucket.org >> /var/lib/jenkins/.ssh/known_hosts```
+
+➔ **Git interno, exemplo:** ```sudo -u jenkins ssh-keyscan git.suaempresa.com >> /var/lib/jenkins/.ssh/known_hosts```
+
+➔ **Ajusta as permissões:**
+```
+sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
+sudo chmod 700 /var/lib/jenkins/.ssh
+sudo chmod 600 /var/lib/jenkins/.ssh/known_hosts
+```
+
+➔ **Use a URL SSH no jenkins, exemplo:**
+```
+git@github.com:empresa/projeto.git
+```
+***O plugin Git do Jenkins usa credenciais SSH privadas quando o repositório está configurado com URL SSH.***
+
+
+## Configurando em job freestyle, na tela do jenkins
+
+➔ **No job:** ```Configure > Source Code Management > Git```
+
+➔ **Preencha os campos, na parte de ***Gerenciamento de código fonte***
+```
+Repository URL: git@github.com:empresa/projeto.git
+Credentials: git-ssh-repo
+Branch Specifier: */main
+```
+
+**Depois salve e rode o build.**
