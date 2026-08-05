@@ -1,7 +1,8 @@
 # Sumário
 * [Instalação do Jenkins](#instalação-do-jenkins)
 * [Criação de credencial SSH no Jenkins para acesso ao repositório Git](#criação-de-credencial-ssh-no-jenkins-para-acesso-ao-repositório-git)
-
+* [Triggers](#triggers)
+  
 # Instalação do Jenkins 
 
 ➔ **Atualizar as listas de pacotes:**
@@ -264,7 +265,7 @@ git@github.com:empresa/projeto.git
 ***O plugin Git do Jenkins usa credenciais SSH privadas quando o repositório está configurado com URL SSH.***
 
 
-## Configurando em job freestyle, na tela do jenkins
+## Para configurar um job freestyle, na tela do jenkins
 
 ➔ **No job:** ```Configure > Source Code Management > Git```
 
@@ -276,5 +277,31 @@ Branch Specifier: */main
 ```
 
 **Depois salve e rode o build.**
+
+[Voltar ao topo](#)
+
+
+
+# Triggers
+
+## Trigger periódica
+
+➔ **Para criar uma trigger periódica em um job Freestyle, configura direto no job usando ***Build periodically ou Construir periodicamente***, passo a passo:**
+
+```
+1. Entre no Jenkins.
+2. Clique no job.
+3. Clique em Configurar.
+4. Vá até a seção:
+    - Build Triggers ou Gatilhos de construção.
+5. Marque a opção: 
+    - Build periodically ou Construir periodicamente
+```
+
+➔ **Dentro do campo Schedule ou Agenda, e coloque:**
+```
+* * * * *
+```
+***Isso faz o Jenkins executar o job a cada minuto. O Jenkins usa uma sintaxe estilo cron com 5 campos: minuto, hora, dia do mês, mês e dia da semana.***
 
 [Voltar ao topo](#)
