@@ -293,7 +293,7 @@ Branch Specifier: */main
 2. Clique no job.
 3. Clique em Configurar.
 4. Vá até a seção:
-    - Build Triggers ou Gatilhos de construção.
+    - Build Triggers ou Triggers ou Gatilhos de construção.
 5. Marque a opção: 
     - Build periodically ou Construir periodicamente
 ```
@@ -303,5 +303,26 @@ Branch Specifier: */main
 * * * * *
 ```
 ***Isso faz o Jenkins executar o job a cada minuto. O Jenkins usa uma sintaxe estilo cron com 5 campos: minuto, hora, dia do mês, mês e dia da semana.***
+
+[Voltar ao topo](#)
+
+
+## Trigger verificando se no repositório Git teve mudança
+
+-> **Para o Jenkins verificar o Git a cada minuto e só rodar se tiver mudança usa outro gatilho, passo a passo:**
+```
+1. Entre no Jenkins.
+2. Clique no job.
+3. Clique em Configurar.
+4. Vá até a seção:
+    - Build Triggers ou Triggers ou Gatilhos de construção.
+5. Marque a opção: 
+    - Poll SCM ou Consultar periodicamente o SCM
+```
+➔ **Dentro do campo Schedule ou Agenda, e coloque:**
+```
+* * * * *
+```
+***Isso faz o Jenkins verificar a cada minuto se o repositório Git teve mudança. O Jenkins usa uma sintaxe estilo cron com 5 campos: minuto, hora, dia do mês, mês e dia da semana.***
 
 [Voltar ao topo](#)
