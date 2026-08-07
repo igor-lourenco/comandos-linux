@@ -2,6 +2,8 @@
 * [Instalação do Jenkins](#instalação-do-jenkins)
 * [Criação de credencial SSH no Jenkins para acesso ao repositório Git](#criação-de-credencial-ssh-no-jenkins-para-acesso-ao-repositório-git)
 * [Triggers](#triggers)
+* [Tipos de teste](#tipos-de-teste-para-verificação-usando-jenkins)
+
   
 # Instalação do Jenkins 
 
@@ -326,3 +328,19 @@ Branch Specifier: */main
 ***Isso faz o Jenkins verificar a cada minuto se o repositório Git teve mudança. O Jenkins usa uma sintaxe estilo cron com 5 campos: minuto, hora, dia do mês, mês e dia da semana.***
 
 [Voltar ao topo](#)
+
+
+# Tipos de teste para verificação usando Jenkins
+
+![Tipos de teste](imagens%2Ftipos_de_teste.png)<br>
+
+| Tipo de Teste / Verificação | Descrição | O que Valida / Exemplos de Itens | Executa a Aplicação? | Ferramentas / Exemplos Comuns |
+| :--- | :--- | :--- | :--- | :--- |
+| **Build** | Verifica se o projeto consegue ser compilado, empacotado e se gera o artefato final (ex: `.jar`). Não é um teste funcional. | Compilação, dependências corretas, ausência de erros de sintaxe, geração de artefato e estrutura do projeto. | Não necessariamente | `mvn clean package` |
+| **Análise Estática** | Avalia o código-fonte sem rodar a aplicação para encontrar problemas de qualidade, segurança e padrões ruins. | Código duplicado, complexidade alta, variáveis não usadas, possíveis bugs e vulnerabilidades. | Não | SonarQube, Checkstyle, PMD, SpotBugs, Detekt, ESLint |
+| **Unitário** | Testa pequenas partes isoladas do sistema (classes ou métodos), sem dependências externas como banco de dados ou APIs. | Classes e métodos isolados de forma independente. | Não, em geral | JUnit, Mockito |
+| **API** | Valida se os endpoints do sistema respondem corretamente aos estímulos enviados. | Status HTTP, corpo da resposta, cabeçalhos, contratos, autenticação e regras de negócio do endpoint. | Às vezes sim | RestAssured, Postman/Newman, MockMvc, WebTestClient, Karate, Playwright/Cypress API |
+| **Funcional** | Valida fluxos de negócio completos sob a perspectiva do usuário final ou comportamento esperado do sistema. | Fluxos como login, cadastro e realização de pedidos utilizando automação de navegadores. | Geralmente sim | Selenium, Playwright, Cypress |
+
+[Voltar ao topo](#)
+
