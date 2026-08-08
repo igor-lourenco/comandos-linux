@@ -8,7 +8,8 @@
 - [Geração de chave assimétrica](Geracao_de_chave_assimetrica.md)
 - [Configuração do Docker](Docker.md)
 - [Configuração do Docker Compose](Docker_Compose.md)
-- [Configuração do Jenkins](Jenkins.md) 
+- [Configuração do Jenkins](Jenkins.md)
+- [Configuração do Sonar com Docker](Sonar.md)
 
 ##### A fazer:
 ➔ Ver o que são cada um dos diretorios do Linux (imagem)
