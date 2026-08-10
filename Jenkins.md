@@ -3,6 +3,7 @@
 * [Criação de credencial SSH no Jenkins para acesso ao repositório Git](#criação-de-credencial-ssh-no-jenkins-para-acesso-ao-repositório-git)
 * [Triggers](#triggers)
 * [Tipos de teste](#tipos-de-teste-para-verificação-usando-jenkins)
+* [Integrar SonarQube com Jenkins](#integrar-sonarqube-com-jenkins)
 
   
 # Instalação do Jenkins 
@@ -344,3 +345,134 @@ Branch Specifier: */main
 
 [Voltar ao topo](#)
 
+
+
+# Integrar SonarQube com Jenkins
+
+## Para instalar o plugin do Sonar no Jenkins
+
+➔ **No Jenkins, vá em:**
+```
+Gerenciar Jenkins > Plugins > Available plugins
+```
+
+➔ **Pesquisar por:**
+```
+SonarQube Scanner
+```
+
+➔ **Instala os plgins:**
+```
+SonarQube Scanner for Jenkins
+Sonar Quality Gates Plugin
+```
+
+***Esses plugins permitem configurar instâncias do SonarQube no Jenkins e executar análise via Maven, Gradle, Scanner CLI ou .NET.***
+
+
+## Para criar token no SonarQube
+
+➔ **Dentro do SonarQube, vá em:**
+```
+My Account > Security > Generate Tokens
+```
+
+➔ **Cria um token, por exemplo:**
+```
+jenkins-token
+```
+**Copie o token gerado.**
+
+***A documentação do Sonar recomenda criar esse token no SonarQube e cadastrá-lo no Jenkins como credencial do tipo: **Secret Text*****
+
+
+## Para cadastrar o token no Jenkins
+
+➔ **No jenkins, vá em:**
+```
+Gerenciar Jenkins > Credentials > System > Global credentials > Add Credentials
+```
+
+➔ **Configure assim:**
+```
+Kind: Secret text
+Scope: Global
+Secret: COLE_AQUI_O_TOKEN_DO_SONAR
+ID: sonar-token
+Description: Token SonarQube
+```
+**E salva.**
+
+
+## Para configurar o servidor Sonar no Jenkins
+
+
+➔ **No Jenkins, vá em:**
+```
+Gerenciar Jenkins > Configure System
+```
+
+➔ **Procura a seção:**
+```
+SonarQube servers
+```
+
+➔ **E clica em:**
+```
+Add SonarQube
+```
+
+➔ **E preencha:**
+```
+Name: SonarQube
+Server URL: http://IP_DO_SONAR:9000
+Server authentication token: sonar-token
+```
+
+➔ **Depois marcar, se aparecer:**
+```
+Enable injection of SonarQube server configuration as build environment variables
+```
+
+***Essa opção permite que o Jenkins injete as configurações do Sonar no ambiente do job. A documentação oficial orienta configurar o Sonar em Manage Jenkins > Configure System e selecionar a credencial criada.***
+
+**E salva.**
+
+
+## Para configurar o job Freestyle
+
+
+➔ **No job, vá em:**
+```
+Seu Job > Configurar
+```
+
+➔ **Em Build Environment, marca:**
+```
+Prepare SonarScanner environment ou Preparar ambiente do SonarScanner
+```
+
+➔ **Seleciona:**
+```
+SonarQube
+```
+***Essa opção injeta variáveis do Sonar no job, como URL e token, para o scanner conseguir publicar a análise.***
+
+
+➔ **Outra forma seria adicionar no passo de construção. Em passo de construção clique em:**
+```
+Execute SonarQube Scanner
+```
+
+➔ **E dentro de Analysis properties, adiciona as propriedades gerados pelo SonarQube no momento da geração do projeto no SonarQube:**
+```
+sonar.projectKey=PROJECT_KEY 
+sonar.projectName='PROJECT_NAME' 
+sonar.host.url=http://IP_DO_SERVIDOR:9000 
+sonar.token=TOKEN
+sonar.java.binaries=target
+```
+
+***Para projeto Java/Spring Boot com Maven antes do scanner rodar, o projeto precisa estar compilado para existir target/classes, senão o Sonar pode falhar pedindo sonar.java.binaries***
+
+[Voltar ao topo](#)
