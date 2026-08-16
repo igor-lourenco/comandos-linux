@@ -476,3 +476,189 @@ sonar.java.binaries=target
 ***Para projeto Java/Spring Boot com Maven antes do scanner rodar, o projeto precisa estar compilado para existir target/classes, senão o Sonar pode falhar pedindo sonar.java.binaries***
 
 [Voltar ao topo](#)
+
+
+
+## Para configurar o Quality Gates do Sonar no Jenkins
+
+O **Quality Gates** permite que o Jenkins valide o resultado da análise do SonarQube e marque o build como falha caso o projeto não atenda aos critérios definidos no Sonar.
+
+---
+
+### Criar o token no SonarQube
+
+➔ **No SonarQube, acesse com o usuário que será usado pelo Jenkins.**
+
+➔ **Vá em:**
+`My Account > Security`
+
+➔ **Na seção de tokens, gere um novo token:**
+* **Name:** `jenkins-quality-gate-token`
+* **Type:** `User Token`
+
+➔ **Copie o token gerado.**
+
+> ⚠️ **Importante:** copie o token no momento da criação, pois depois ele não será exibido novamente.
+
+---
+
+### Permissões necessárias no SonarQube
+
+O usuário dono do token precisa ter permissão no projeto que será analisado.
+
+➔ **No SonarQube, vá no projeto:**
+`Project > Administration > Permissions`
+
+➔ **Garanta que o usuário do Jenkins tenha permissões como:**
+* `Browse`
+* `See Source Code`
+* `Execute Analysis`
+
+Essas permissões permitem que o Jenkins envie a análise e também consulte o status do Quality Gate.
+
+---
+
+### Configurar o Quality Gates no Jenkins
+
+➔ **No Jenkins, vá em:**
+`Gerenciar Jenkins > Configure System`
+
+➔ **Procure a seção:**
+`Quality Gates - Sonarqube` ou `Quality Gates`
+
+➔ **Preencha com os dados do SonarQube:**
+* **Name:** `SonarQube`
+* **SonarQube Server URL:** `http://IP_DO_SONAR:9000`
+* **Token:** `TOKEN_GERADO_NO_SONAR`
+
+> 💡 Se o plugin não tiver campo de token e tiver apenas usuário e senha, pode ser necessário configurar um usuário técnico do SonarQube, por exemplo `jenkins`, e informar o login e senha desse usuário.
+
+**Exemplo:**
+* **SonarQube account login:** `jenkins`
+* **SonarQube account password:** `SENHA_DO_USUARIO_JENKINS`
+
+---
+
+### Configurar o Quality Gates no job Freestyle
+
+➔ **No Jenkins, entre no job Freestyle.**
+
+➔ **Vá em:**
+`Job > Configurar`
+
+➔ **Procure a seção:**
+`Post-build Actions`
+
+➔ **Clique em:**
+`Add post-build action`
+
+➔ **Selecione:**
+`Quality Gates Sonarqube Plugin`
+
+➔ **No campo Project Key, informe a mesma chave usada na análise do Sonar, por exemplo:**
+`spring-com-testes-automatizados`
+
+Essa chave precisa ser a mesma configurada no SonarScanner:
+```properties
+sonar.projectKey=spring-com-testes-automatizados
+```
+
+---
+
+### Observação importante sobre o job Freestyle
+
+Em alguns casos, dentro do job Freestyle, o plugin **Quality Gates Sonarqube Plugin** mostra apenas o campo:
+`Project Key`
+
+Isso acontece porque a configuração do servidor SonarQube fica na configuração global do Jenkins, em:
+`Gerenciar Jenkins > Configure System > Quality Gates - Sonarqube`
+
+Portanto, se o Jenkins retornar erro como:
+```text
+Expected status 200, got: 403 Insufficient privileges
+```
+significa que o plugin de Quality Gates está usando uma credencial sem permissão suficiente ou uma configuração global incorreta.
+
+---
+
+### Testar o token manualmente
+
+Antes de rodar pelo Jenkins, é possível testar o token diretamente no servidor.
+
+➔ **Teste o status do Quality Gate:**
+```bash
+curl -u "SEU_TOKEN:" \
+  "http://IP_DO_SONAR:9000/api/qualitygates/project_status?projectKey=spring-com-testes-automatizados"
+```
+
+➔ Se estiver funcionando, o retorno será parecido com:
+```json
+{
+  "projectStatus": {
+    "status": "OK"
+  }
+}
+```
+
+ou:
+
+```json
+{
+  "projectStatus": {
+    "status": "ERROR"
+  }
+}
+```
+
+#### Testar a task da análise do Sonar
+
+Quando o SonarScanner finaliza, ele mostra uma URL parecida com:
+`http://IP_DO_SONAR:9000/api/ce/task?id=ID_DA_TASK`
+
+Também é possível testar esse endpoint:
+```bash
+curl -u "SEU_TOKEN:" \
+  "http://IP_DO_SONAR:9000/api/ce/task?id=ID_DA_TASK"
+```
+
+Se o retorno for:
+```json
+{
+  "errors": [
+    {
+      "msg": "Insufficient privileges"
+    }
+  }
+}
+```
+então o token usado não tem permissão suficiente para consultar a análise no SonarQube.
+
+---
+
+### Resumo da configuração
+
+➔ **No SonarQube:**
+* Criar token para o Jenkins
+* Garantir permissão no projeto
+
+➔ **No Jenkins, configuração global:**
+* `Gerenciar Jenkins > Configure System > Quality Gates - Sonarqube`
+
+➔ **No Jenkins, job Freestyle:**
+* `Post-build Actions > Quality Gates Sonarqube Plugin`
+* **Project Key:** `spring-com-testes-automatizados`
+
+➔ **O Project Key precisa ser igual ao usado no scanner:**
+```properties
+sonar.projectKey=spring-com-testes-automatizados
+```
+
+---
+
+### Observação de segurança
+
+Nunca versionar ou expor tokens do SonarQube em arquivos, logs ou documentação pública.
+
+Caso um token seja exibido no console do Jenkins ou compartilhado acidentalmente, o ideal é revogar o token no SonarQube e gerar um novo.
+
+[Voltar ao topo](#)
