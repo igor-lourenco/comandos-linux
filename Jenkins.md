@@ -483,7 +483,6 @@ sonar.java.binaries=target
 
 O **Quality Gates** permite que o Jenkins valide o resultado da análise do SonarQube e marque o build como falha caso o projeto não atenda aos critérios definidos no Sonar.
 
----
 
 ### Criar o token no SonarQube
 
@@ -500,7 +499,6 @@ O **Quality Gates** permite que o Jenkins valide o resultado da análise do Sona
 
 > ⚠️ **Importante:** copie o token no momento da criação, pois depois ele não será exibido novamente.
 
----
 
 ### Permissões necessárias no SonarQube
 
@@ -516,7 +514,6 @@ O usuário dono do token precisa ter permissão no projeto que será analisado.
 
 Essas permissões permitem que o Jenkins envie a análise e também consulte o status do Quality Gate.
 
----
 
 ### Configurar o Quality Gates no Jenkins
 
@@ -563,8 +560,6 @@ Essa chave precisa ser a mesma configurada no SonarScanner:
 sonar.projectKey=spring-com-testes-automatizados
 ```
 
----
-
 ### Observação importante sobre o job Freestyle
 
 Em alguns casos, dentro do job Freestyle, o plugin **Quality Gates Sonarqube Plugin** mostra apenas o campo:
@@ -579,7 +574,6 @@ Expected status 200, got: 403 Insufficient privileges
 ```
 significa que o plugin de Quality Gates está usando uma credencial sem permissão suficiente ou uma configuração global incorreta.
 
----
 
 ### Testar o token manualmente
 
@@ -633,7 +627,6 @@ Se o retorno for:
 ```
 então o token usado não tem permissão suficiente para consultar a análise no SonarQube.
 
----
 
 ### Resumo da configuração
 
@@ -653,12 +646,98 @@ então o token usado não tem permissão suficiente para consultar a análise no
 sonar.projectKey=spring-com-testes-automatizados
 ```
 
+[Voltar ao topo](#)
+
 ---
 
-### Observação de segurança
+## Para aparecer o gráfico “Tendência de resultados de teste” no Jenkins
 
-Nunca versionar ou expor tokens do SonarQube em arquivos, logs ou documentação pública.
+O plugin JUnit do Jenkins consome relatórios XML de teste e gera visualização histórica, tendências, tela de resultados e rastreio de falhas.
 
-Caso um token seja exibido no console do Jenkins ou compartilhado acidentalmente, o ideal é revogar o token no SonarQube e gerar um novo.
+### 1. Instale/verifique o plugin JUnit no Jenkins
+
+No Jenkins, vá em:
+`Gerenciar Jenkins` > `Plugins`
+
+Procure por:
+`JUnit`
+
+Instale ou confirme que está instalado:
+* **JUnit Plugin**
+
+Esse plugin permite publicar relatórios no formato JUnit XML e gerar gráficos históricos de resultados.
+
+### 2. Entenda onde ficam os relatórios dos testes Maven
+
+Para projetos Maven, o padrão é:
+
+* **Testes unitários:** São executados pelo *Maven Surefire Plugin* e geram XML em:
+  ```bash
+  target/surefire-reports/*.xml
+  ```
+  O Maven Surefire roda na fase `test` e, por padrão, gera relatórios XML em `target/surefire-reports/TEST-*.xml`.
+
+* **Testes de integração:** Se você separou testes de integração com o *Maven Failsafe Plugin*, os relatórios ficam em:
+  ```bash
+  target/failsafe-reports/*.xml
+  ```
+
+> **Dica:** Para pegar unitários e integração no Jenkins, use os dois caminhos.
+
+### 3. Configure no job Freestyle
+
+1. Entre no seu job: `Deploy_Spring_Com_Testes_Automatizados` > `Configurar`
+2. Vá até a seção: **Post-build Actions** (Ações pós-construção)
+3. Clique em: **Add post-build action**
+4. Selecione: **Publish JUnit test result report**
+5. No campo **Test report XMLs**, coloque:
+   ```bash
+   target/surefire-reports/*.xml,target/failsafe-reports/*.xml
+   ```
+   Ou de forma mais abrangente (caso use multi-módulos):
+   ```bash
+   **/target/surefire-reports/*.xml,**/target/failsafe-reports/*.xml
+   ```
+
+O Jenkins usa a sintaxe *Ant glob* para localizar os XMLs dos testes, e o diretório base é o workspace do job.
+
+### 4. Ajuste seu comando Maven
+
+Se você quer rodar só testes unitários:
+```bash
+mvn clean test
+```
+
+Se você quer rodar testes unitários + integração:
+```bash
+mvn clean verify
+```
+
+Para integração, o mais comum é usar o `verify` porque o Failsafe normalmente roda nas fases `integration-test` e `verify`.
+
+### 5. Ordem recomendada no Freestyle
+
+No seu job Freestyle, deixe os passos configurados nesta ordem:
+
+1. **Build Step:** Execute shell
+   ```bash
+   mvn clean verify
+   ```
+2. **Build Step:** Execute SonarQube Scanner
+3. **Post-build Action:** Publish JUnit test result report
+   * `**/target/surefire-reports/*.xml,**/target/failsafe-reports/*.xml`
+4. **Post-build Action:** Quality Gates SonarQube Plugin
+5. **Build Step** ou **Post-build Action** de deploy (se estiver usando).
+
+*Nota: Se o deploy está no mesmo shell, recomendo deixar o deploy depois dos testes, Sonar e Quality Gate.*
+
+### 6. Onde aparece o gráfico?
+
+Depois de rodar alguns builds, entre no job `Deploy_Spring_Com_Testes_Automatizados`. Você deve começar a ver links como:
+* **Test Result**
+* **Últimos resultados de teste**
+* **Tendência de resultados de teste**
+
+> ⚠️ **Importante:** O gráfico de tendência só fica visível e útil depois de mais de uma execução, porque ele compara os builds ao longo do tempo.
 
 [Voltar ao topo](#)
