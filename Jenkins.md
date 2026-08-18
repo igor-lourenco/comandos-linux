@@ -819,8 +819,6 @@ sonar.coverage.jacoco.xmlReportPaths=target/jacoco-report/jacoco.xml
 sonar.sourceEncoding=UTF-8
 ```
 
----
-
 ➔ **Se o gráfico não aparecer:**
 
 - **Verifique estes pontos no servidor/workspace:**
@@ -844,5 +842,127 @@ mvn clean package -DskipTests
 mvn clean verify
 ```
 
+
+### Para excluir classes da cobertura de testes no Sonar via Jenkins
+
+➔ **Em ***Execute SonarQube Scanner***, usando a propriedade:**
+```properties
+sonar.coverage.exclusions
+```
+
+***Essa propriedade serve para excluir arquivos/classes apenas do cálculo de cobertura, sem remover essas classes da análise geral (segurança, code smells, etc.) do Sonar.***
+
+> **Nota:** Parâmetros passados no CI/CD têm precedência sobre a configuração feita na interface do SonarQube.
+
+➔ **Diferença Importante:**
+* Use `sonar.coverage.exclusions` quando você quer excluir **apenas da cobertura de testes**.
+* Evite usar `sonar.exclusions` se sua intenção é só cobertura, porque ela remove o arquivo da **análise inteira** do Sonar.
+
+
+➔ **Como configurar no Jenkins Freestyle:**
+
+1. No job, vá em: `Configurar`
+2. Vá até o passo: **Execute SonarQube Scanner**
+3. No campo **Analysis properties**, adiciona a propriedade com os padrões desejados.
+ - **Exemplo prático para projeto Spring Boot:**
+```properties
+sonar.projectKey=spring-com-testes-automatizados
+sonar.projectName=spring-com-testes-automatizados
+sonar.sources=src/main/java
+sonar.tests=src/test/java
+sonar.java.binaries=target/classes
+sonar.sourceEncoding=UTF-8
+ 
+sonar.coverage.exclusions=\
+**/config/**,\
+**/security/**,\
+**/dto/**,\
+**/exception/**,\
+**/entity/**,\
+**/*Application.java
+```
+***Esses padrões seguem o estilo de caminho Ant pattern para identificar arquivos ou pastas.***
+
+➔ **Exemplo específico para classes isoladas:**
+```properties
+sonar.coverage.exclusions=\
+**/JwtConfig.java,\
+**/AuthorizationServerConfig.java,\
+**/TestesApplication.java,\
+**/SecurityConfig.java
+```
+
+➔ **Exemplo por padrão de nomenclatura:**
+```properties
+sonar.coverage.exclusions=\
+**/*Config.java,\
+**/*Configuration.java,\
+**/*Application.java,\
+**/*Exception.java,\
+**/*DTO.java,\
+**/*Request.java,\
+**/*Response.java
+```
+
+➔ **O que normalmente se exclui em projetos Spring Boot:**
+```
+- Classe Main da aplicação (`*Application.java`)
+- Classes de configuração e segurança
+- DTOs (Requests e Responses)
+- Entities (dependendo da estratégia do time)
+- Exceptions personalizadas
+- Classes de constantes e Enums
+```
+
+➔ **Configuração Completa Recomendada para o Jenkins:**
+```properties
+sonar.projectKey=spring-com-testes-automatizados
+sonar.projectName=spring-com-testes-automatizados
+sonar.sources=src/main/java
+sonar.tests=src/test/java
+sonar.java.binaries=target/classes
+sonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+sonar.sourceEncoding=UTF-8
+ 
+sonar.coverage.exclusions=\
+**/*Application.java,\
+**/config/**,\
+**/configuration/**,\
+**/security/**,\
+**/dto/**,\
+**/request/**,\
+**/response/**,\
+**/entity/**,\
+**/entities/**,\
+**/exception/**,\
+**/exceptions/**,\
+**/constants/**,\
+**/enums/**
+```
+
+*> ⚠️ **Importante:** Não esquecer de rodar o comando abaixo no passo anterior ao Sonar para gerar o relatório:*
+```bash
+mvn clean verify jacoco:report
+```
+
+
+#### Resumo Direto
+
+➔ **No Jenkins, adicione isso no ***Execute SonarQube Scanner*** > ***Analysis properties***:**
+```properties
+sonar.coverage.exclusions=\
+**/configs/**,\
+**/entities/**,\
+**/DTOs/**,\
+**/controllers/handlers/**,\
+**/services/exceptions/**,\
+**/services/validation/**,\
+**/security/**,\
+**/utils/**,\
+**/src/test/**,\
+**Application.java
+```
+
 [Voltar ao topo](#)
+
 ---
