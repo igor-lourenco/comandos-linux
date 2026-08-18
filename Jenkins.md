@@ -3,7 +3,7 @@
 * [Criação de credencial SSH no Jenkins para acesso ao repositório Git](#criação-de-credencial-ssh-no-jenkins-para-acesso-ao-repositório-git)
 * [Triggers](#triggers)
 * [Tipos de teste](#tipos-de-teste-para-verificação-usando-jenkins)
-* [Integrar SonarQube com Jenkins](#integrar-sonarqube-com-jenkins)
+* [Teste unitário ➔ Integrando SonarQube com Jenkins](#integrar-sonarqube-com-jenkins)
   * [Configurar o Quality Gates do Sonar no Jenkins](#para-configurar-o-quality-gates-do-sonar-no-jenkins)
   * [Gráfico Tendência de resultados de teste no Jenkins](#para-aparecer-o-gráfico-tendência-de-resultados-de-teste-no-jenkins)
   * [Cobertura de testes no Sonar](#para-visualizar-cobertura-de-testes-no-sonar)   
