@@ -4,6 +4,7 @@
 * [Triggers](#triggers)
 * [Tipos de teste](#tipos-de-teste-para-verificação-usando-jenkins)
 * [Integrar SonarQube com Jenkins](#integrar-sonarqube-com-jenkins)
+  * [Configurar o Quality Gates do Sonar no Jenkins](#para-configurar-o-quality-gates-do-sonar-no-jenkins)   
 
   
 # Instalação do Jenkins 
