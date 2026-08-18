@@ -4,7 +4,8 @@
 * [Triggers](#triggers)
 * [Tipos de teste](#tipos-de-teste-para-verificação-usando-jenkins)
 * [Integrar SonarQube com Jenkins](#integrar-sonarqube-com-jenkins)
-  * [Configurar o Quality Gates do Sonar no Jenkins](#para-configurar-o-quality-gates-do-sonar-no-jenkins)   
+  * [Configurar o Quality Gates do Sonar no Jenkins](#para-configurar-o-quality-gates-do-sonar-no-jenkins)
+  * [Gráfico Tendência de resultados de teste no Jenkins](#para-aparecer-o-gráfico-tendência-de-resultados-de-teste-no-jenkins)   
 
   
 # Instalação do Jenkins 
@@ -478,7 +479,7 @@ sonar.java.binaries=target
 
 [Voltar ao topo](#)
 
-
+---
 
 ## Para configurar o Quality Gates do Sonar no Jenkins
 
@@ -535,7 +536,6 @@ Essas permissões permitem que o Jenkins envie a análise e também consulte o s
 * **SonarQube account login:** `jenkins`
 * **SonarQube account password:** `SENHA_DO_USUARIO_JENKINS`
 
----
 
 ### Configurar o Quality Gates no job Freestyle
 
